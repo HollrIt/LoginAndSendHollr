@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $("button").click(function () {
-                var username = $('#username').val();
                 $.post("https://hollrit.azurewebsites.net/api/User",
-                {
-                    username: $('#username').val(),
-                    password: $('#password').val()
-                },
-                function (currentUser, status) {
-                    if (status !== "success") {
-                        alert("invalid credtntials");
-                        return;
-                    }
-                    var tagToPost = {
-                        currentUser,
-                        tag: $('#tag').val(), text: $('#text').val()
-                    }
-                    /*Begin post*/
-                    $.ajax({
-                        url: 'https://hollrit.azurewebsites.net/api/Hollr',
-                        type: "POST",
-                        data: JSON.stringify(tagToPost),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function(sentItem, status) {
-                            alert("Hollr sent!");
-                        },
-                        error: function(status) {
-                            alert('Hollr not sent, you do not own this tag or it does not exist.');
+                    {
+                        username: $('#username').val(),
+                        password: $('#password').val()
+                    })
+                    .fail(function (error) {
+                        alert('Invalid username/password.');
+                    })
+                    .done(function (currentUser, status) {
+                        if (status !== "success") {
+                            alert("invalid credtntials");
+                            return;
                         }
-                });
-                    /*End post*/
-                });
+                        var tagToPost = {
+                            currentUser,
+                            tag: $('#tag').val(),
+                            text: $('#text').val()
+                        }
+                        /*Begin post*/
+                        $.ajax({
+                            url: 'https://hollrit.azurewebsites.net/api/Hollr',
+                            type: "POST",
+                            data: JSON.stringify(tagToPost),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (sentItem, status) {
+                                alert("Hollr sent!");
+                            },
+                            error: function (status) {
+                                alert('Hollr not sent, you do not own this tag or it does not exist.');
+                            }
+                        });
+                        /*End post*/
+                    });
             });
         });
     </script>
+    <style>
+        .FieldLabel {
+            width: 100px;
+            text-align: right;
+            display: inline-block;
+            margin: 10px;
+            vertical-align: top;
+        }
+        input, textarea {
+            width: 200px;
+            text-align: left;
+            display: inline-block;
+            vertical-align: bottom;
+            margin: 10px;
+        }
+        button, a {
+            display: inline-block;
+            margin-left: 260px;
+            text-align: right;
+        }
+    </style>
+
 </head>
 <body>
-    Username: <input type="text" id="username" /><br />
-    Password: <input type="password" id="password" /><br />
-    Tag: <input type="text" id="tag" /><br />
-    Message: <input type="textbox" id="text" /><br />
+    <span class="FieldLabel">Username:</span> <input type="text" id="username" /><br />
+    <span class="FieldLabel">Password:</span> <input type="password" id="password" /><br />
+    <span class="FieldLabel">Tag:</span> <input type="text" id="tag" /><br />
+    <span class="FieldLabel">Message:</span> <textarea rows="4" cols="50" id="text"></textarea><br />
     <button>Send Hollr</button>
-    !!!
+    <Br />
+    <a href="http://hollr.it/ResetPassword">Forgot password?</a>
 </body>
 </html>
