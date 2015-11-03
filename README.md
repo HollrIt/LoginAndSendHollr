@@ -9,6 +9,7 @@ This sample HTML form demonstrates how to use the HollrIt API to:
 
 ####Get userId and mobileServiceAuthenticationToken for a user
 POST https://hollrit.azurewebsites.net/api/User
+
 returns: {userId:"authenticated userId","mobileServiceAuthenticationToken":"auth token good for long term, repeated use"}
 
 *Sample (replace userId and mobileServiceAuthenticationToken with real ones)*
@@ -25,6 +26,7 @@ Content-Type: application/json
 
 ####Send a Hollr for given user
 POST https://hollrit.azurewebsites.net/api/Hollr
+
 returns: Tag and http 201 if message created and sent successfully.
 
 
