@@ -2,8 +2,8 @@
 ##Use the HollrIt API to login user and send a Hollr.
 
 This sample HTML form demonstrates how to use the HollrIt API to:
-1. authenticate a user
-2. send a Hollr to a tag with credentials
+* authenticate a user
+* send a Hollr to a tag with credentials
 
 ###The HTML form uses these HollrIt endpoints:
 
