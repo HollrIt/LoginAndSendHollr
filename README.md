@@ -24,8 +24,8 @@ Content-Type: application/json
 
 
 ####Send a Hollr for given user
-POST https://hollrit.azurewebsites.net/api/Hollr
-Optinal params CallbackUrl and CallbackPayload for webhook callback. Payload is optional and must be JSON. The callback must accept a POST and application/json.
+POST https://hollrit.azurewebsites.net/api/Hollr\s\s
+Optinal params CallbackUrl and CallbackPayload for webhook callback. Payload is optional and must be JSON. The callback must accept a POST and application/json.\s\s
 returns: Tag and http 201 if message created and sent successfully.
 
 
