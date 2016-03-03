@@ -9,7 +9,7 @@ This sample HTML form demonstrates how to use the HollrIt API to:
 
 ####Get userId and mobileServiceAuthenticationToken for a user
 POST https://hollrit.azurewebsites.net/api/User  
-returns: {userId:"authenticated userId","mobileServiceAuthenticationToken":"auth token good for long term, repeated use"}
+Returns: {userId:"authenticated userId","mobileServiceAuthenticationToken":"auth token good for long term, repeated use"}
 
 *Sample (replace userId and mobileServiceAuthenticationToken with real ones)*
 
@@ -24,9 +24,9 @@ Content-Type: application/json
 
 
 ####Send a Hollr for given user
-POST https://hollrit.azurewebsites.net/api/Hollr\s\s
-Optinal params CallbackUrl and CallbackPayload for webhook callback. Payload is optional and must be JSON. The callback must accept a POST and application/json.\s\s
-returns: Tag and http 201 if message created and sent successfully.
+POST https://hollrit.azurewebsites.net/api/Hollr  
+Returns: Tag and http 201 if message created and sent successfully.  
+(Optinal params callbackUrl and callbackPayload for webhook callback. Payload is optional and must be JSON. The callback must accept a POST and application/json.)  
 
 
 *Sample POST (replace userId and mobileServiceAuthenticationToken with real ones)*
@@ -40,6 +40,6 @@ Content-Length: 419
 
 {
 currentUser: {userId:"TheUserId",mobileServiceAuthenticationToken:"TheAuthToken"},
-tag: 'myTag', text: 'Hello cool people!'
+tag: 'myTag', text: 'Hello cool people!', callbackUrl: 'http://requestb.in/1ceii7d1', callbackPayload: '{my:"jsonPayload"}'
  }
 ```
