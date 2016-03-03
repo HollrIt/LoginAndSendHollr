@@ -26,7 +26,7 @@ Content-Type: application/json
 ####Send a Hollr for given user
 POST https://hollrit.azurewebsites.net/api/Hollr  
 Returns: Tag and http 201 if message created and sent successfully.  
-(Optional params are 'callbackUrl' and 'callbackPayload' for webhook callback. Payload is optional and must be JSON. The callback must accept a POST and application/json. Callback sends your payload back to you after Hollr notification is sent).
+(Optional params are 'webhookUrl' and 'webhookPayload' for webhook callback. Payload is optional and must be JSON. The callback must accept a POST and application/json. Callback sends your payload back to you after Hollr notification is sent).
 
 
 *Sample POST (replace userId and mobileServiceAuthenticationToken with real ones)*
@@ -40,6 +40,6 @@ Content-Length: 419
 
 {
 currentUser: {userId:"TheUserId",mobileServiceAuthenticationToken:"TheAuthToken"},
-tag: 'myTag', text: 'Hello cool people!', callbackUrl: 'http://requestb.in/1ceii7d1', callbackPayload: '{my:"jsonPayload"}'
+tag: 'myTag', text: 'Hello cool people!', webhookUrl: 'http://requestb.in/1ceii7d1', webhookPayload: '{my:"jsonPayload"}'
  }
 ```
